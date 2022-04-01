@@ -30,19 +30,19 @@ function Notifications() {
   });
 
   return (
-    <div className="relative inline-flex ml-3">
+    <div className="relative inline-flex ml-3 ">
       <button
         ref={trigger}
-        className={`w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 rounded-full ${dropdownOpen && 'bg-slate-200'}`}
+        className={`w-8 h-8 flex items-center justify-center bg-white transition duration-150 rounded-full shadow-lg  ${dropdownOpen && 'bg-slate-200'}`}
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
         <span className="sr-only">Notifications</span>
-        <svg className="w-4 h-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-          <path className="fill-current text-slate-500" d="M6.5 0C2.91 0 0 2.462 0 5.5c0 1.075.37 2.074 1 2.922V12l2.699-1.542A7.454 7.454 0 006.5 11c3.59 0 6.5-2.462 6.5-5.5S10.09 0 6.5 0z" />
-          <path className="fill-current text-slate-400" d="M16 9.5c0-.987-.429-1.897-1.147-2.639C14.124 10.348 10.66 13 6.5 13c-.103 0-.202-.018-.305-.021C7.231 13.617 8.556 14 10 14c.449 0 .886-.04 1.307-.11L15 16v-4h-.012C15.627 11.285 16 10.425 16 9.5z" />
+        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" className="" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 19.5C9.1 19.5 10 18.6 10 17.5H6C6 18.6 6.9 19.5 8 19.5ZM14 13.5V8.5C14 5.43 12.37 2.86 9.5 2.18V1.5C9.5 0.67 8.83 0 8 0C7.17 0 6.5 0.67 6.5 1.5V2.18C3.64 2.86 2 5.42 2 8.5V13.5L0 15.5V16.5H16V15.5L14 13.5ZM12 14.5H4V8.5C4 6.02 5.51 4 8 4C10.49 4 12 6.02 12 8.5V14.5Z" fill="black"/>
         </svg>
+
         <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-rose-500 border-2 border-white rounded-full"></div>
       </button>
 
@@ -54,8 +54,7 @@ function Notifications() {
         enterEnd="opacity-100 translate-y-0"
         leave="transition ease-out duration-200"
         leaveStart="opacity-100"
-        leaveEnd="opacity-0"
-      >
+        leaveEnd="opacity-0">
         <div
           ref={dropdown}
           onFocus={() => setDropdownOpen(true)}

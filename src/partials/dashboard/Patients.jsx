@@ -6,7 +6,7 @@ import Image03 from '../../images/user-36-07.jpg';
 import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 
-function DashboardCard10() {
+function Patients() {
 
   const customers = [
     {
@@ -14,7 +14,7 @@ function DashboardCard10() {
       image: Image01,
       name: 'Alex Shatov',
       email: 'alexshatov@gmail.com',
-      location: '🇺🇸',
+      visit: '12-12-2021',
       spent: '$2,890.66',
     },
     {
@@ -22,7 +22,7 @@ function DashboardCard10() {
       image: Image02,
       name: 'Philip Harbach',
       email: 'philip.h@gmail.com',
-      location: '🇩🇪',
+      visit: '12-12-2021',
       spent: '$2,767.04',
     },
     {
@@ -30,7 +30,7 @@ function DashboardCard10() {
       image: Image03,
       name: 'Mirko Fisuk',
       email: 'mirkofisuk@gmail.com',
-      location: '🇫🇷',
+      visit: '12-12-2021',
       spent: '$2,996.00',
     },
     {
@@ -38,25 +38,18 @@ function DashboardCard10() {
       image: Image04,
       name: 'Olga Semklo',
       email: 'olga.s@cool.design',
-      location: '🇮🇹',
+      visit: '12-12-2021',
       spent: '$1,220.66',
-    },
-    {
-      id: '4',
-      image: Image05,
-      name: 'Burak Long',
-      email: 'longburak@gmail.com',
-      location: '🇬🇧',
-      spent: '$1,890.66',
     },
   ];
 
   return (
-    <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
-      <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Customers</h2>
+    <div className="h-auto col-span-full xl:w-7/12 bg-white shadow-lg  border border-slate-200 rounded-xl">
+      <header className="px-5 py-2 flex justify-between">
+        <h2 className="font-semibold text-slate-600">Patients</h2>
+        <div className="font-semibold bg-bgreen text-sm text-white py-1 px-3 rounded-md hover:cursor-pointer">Browse all</div>
       </header>
-      <div className="p-3">
+      <div className="p-2">
 
         {/* Table */}
         <div className="overflow-x-auto">
@@ -64,17 +57,14 @@ function DashboardCard10() {
             {/* Table header */}
             <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
               <tr>
-                <th className="p-2 whitespace-nowrap">
+                <th className="p-1 px-2 whitespace-nowrap">
                   <div className="font-semibold text-left">Name</div>
                 </th>
-                <th className="p-2 whitespace-nowrap">
+                <th className="p-1 px-2 whitespace-nowrap">
                   <div className="font-semibold text-left">Email</div>
                 </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Spent</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-center">Country</div>
+                <th className="p-1 px-2 whitespace-nowrap">
+                  <div className="font-semibold text-left">Last visit</div>
                 </th>
               </tr>
             </thead>
@@ -96,10 +86,7 @@ function DashboardCard10() {
                         <div className="text-left">{customer.email}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left font-medium text-green-500">{customer.spent}</div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-lg text-center">{customer.location}</div>
+                        <div className="text-left font-medium text-bgreen">{customer.visit}</div>
                       </td>
                     </tr>
                   )
@@ -109,10 +96,9 @@ function DashboardCard10() {
           </table>
 
         </div>
-
       </div>
     </div>
   );
 }
 
-export default DashboardCard10;
+export default Patients;

@@ -6,7 +6,7 @@ import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
 import DashboardAvatars from '../partials/dashboard/DashboardAvatars';
 import FilterButton from '../partials/actions/FilterButton';
 import Datepicker from '../partials/actions/Datepicker';
-import DashboardCard01 from '../partials/dashboard/DashboardCard01';
+import Appointements from '../partials/dashboard/Appointements';
 import DashboardCard02 from '../partials/dashboard/DashboardCard02';
 import DashboardCard03 from '../partials/dashboard/DashboardCard03';
 import DashboardCard04 from '../partials/dashboard/DashboardCard04';
@@ -15,11 +15,13 @@ import DashboardCard06 from '../partials/dashboard/DashboardCard06';
 import DashboardCard07 from '../partials/dashboard/DashboardCard07';
 import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 import DashboardCard09 from '../partials/dashboard/DashboardCard09';
-import DashboardCard10 from '../partials/dashboard/DashboardCard10';
+import Patients from '../partials/dashboard/Patients';
 import DashboardCard11 from '../partials/dashboard/DashboardCard11';
-import DashboardCard12 from '../partials/dashboard/DashboardCard12';
+import RecentVisit from '../partials/dashboard/RecentVisit';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
 import Banner from '../partials/Banner';
+import Bills from '../partials/dashboard/Bills';
+import Table from '../partials/dashboard/Table';
 
 function Dashboard() {
 
@@ -38,13 +40,13 @@ function Dashboard() {
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
-          <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+          <div className="px-4 sm:px-6 lg:px-8 pb-4 w-full max-w-9xl mx-auto">
 
             {/* Cards */}
-            <div className="grid grid-cols-12 gap-6">
+            <div className="flex flex-col flex-wrap justify-between">
 
-              {/* Line chart (Acme Plus) 
-              <DashboardCard01 />
+      
+{/*               
               <DashboardCard02 />
               <DashboardCard03 />
               <DashboardCard04 />
@@ -52,19 +54,24 @@ function Dashboard() {
               <DashboardCard06 />
               <DashboardCard07 />
               <DashboardCard08 />
-              <DashboardCard09 />
-              <DashboardCard10 />
-              <DashboardCard11 />
-              <DashboardCard12 />
-  <DashboardCard13 /> */}
-              
+              <DashboardCard09 /> */}
+             
+{/*               <DashboardCard11 />
+ */}          <div  className="flex  flex-wrap justify-between w-full">
+                <Patients />     
+                <Appointements />
+              </div>
+              <div  className="flex  flex-wrap justify-between w-full mt-8">
+                <Bills/>         
+                <Bills/>         
+                <Bills/>     
+              </div>
+    
+ 
             </div>
 
           </div>
         </main>
-
-        <Banner />
-
       </div>
     </div>
   );

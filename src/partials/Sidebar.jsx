@@ -7,6 +7,7 @@ import SidebarLink from './SidebarLink';
 import SidebarLinkGroup from './SidebarLinkGroup';
 import Settings from './header/Settings';
 import Logout from './header/Logout';
+import expendedlogo from '../images/pshare1.png'
 
 
 
@@ -63,11 +64,11 @@ function Sidebar({
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0  md:rounded-r-sidebar transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 shadow-2xl bg-white p-4 transition-all duration-200 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}`}
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0  transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 shadow-2xl bg-white p-4 transition-all duration-200 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}`}
       >
 
         {/* Sidebar header */}
-        <div className="flex justify-between mb-10 pr-3 sm:px-2">
+        <div className="flex justify-between mb-10 pr-3 sm:px-2 ">
           {/* Close button */}
           <button
             ref={trigger}
@@ -83,7 +84,7 @@ function Sidebar({
           </button>
           {/* Logo */}
           <NavLink end to="/" className="flex w-full justify-center">
-             <img className="w-32  mb-2 -ml-4 -mt-4" src={logo} />
+            {(sidebarExpanded)?<img className="w-32  mb-2 -ml-4 -mt-4" src={logo} />:<img className="w-16 " src={expendedlogo} />}
           </NavLink>
         </div>
 
@@ -122,7 +123,7 @@ function Sidebar({
               </SidebarLink>
 
               <SidebarLink pathname="Chat">
-                            <svg className="w-4 h-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <svg className="shrink-0 w-4 h-4" viewBox="0 0 16 16">
                               <path className="fill-current " d="M6.5 0C2.91 0 0 2.462 0 5.5c0 1.075.37 2.074 1 2.922V12l2.699-1.542A7.454 7.454 0 006.5 11c3.59 0 6.5-2.462 6.5-5.5S10.09 0 6.5 0z" />
                               <path className="fill-current text-slate-400" d="M16 9.5c0-.987-.429-1.897-1.147-2.639C14.124 10.348 10.66 13 6.5 13c-.103 0-.202-.018-.305-.021C7.231 13.617 8.556 14 10 14c.449 0 .886-.04 1.307-.11L15 16v-4h-.012C15.627 11.285 16 10.425 16 9.5z" />
                             </svg>
@@ -167,7 +168,7 @@ function Sidebar({
         
         <div className="flex flex-column flex-grow"/>
 
-        <ul className="py-10 border-t-2 border-slate-400 w-full">
+        <ul className=" pb-10 pt-5 2xl:py-10 border-t-2 border-slate-400 w-full">
               <SidebarLink pathname="Settings">
                            <Settings />
               </SidebarLink>

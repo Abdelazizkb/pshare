@@ -1,52 +1,88 @@
-import React from 'react';
-import BarChart from '../../charts/BarChart01';
+import React from 'react'
 
-// Import utilities
-import { tailwindConfig } from '../../utils/Utils';
-
-function DashboardCard04() {
-
-  const chartData = {
-    labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-    ],
-    datasets: [
-      // Light blue bars
-      {
-        label: 'Direct',
-        data: [
-          800, 1600, 900, 1300, 1950, 1700,
-        ],
-        backgroundColor: tailwindConfig().theme.colors.blue[400],
-        hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
-        barPercentage: 0.66,
-        categoryPercentage: 0.66,
-      },
-      // Blue bars
-      {
-        label: 'Indirect',
-        data: [
-          4900, 2600, 5350, 4800, 5200, 4800,
-        ],
-        backgroundColor: tailwindConfig().theme.colors.indigo[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
-        barPercentage: 0.66,
-        categoryPercentage: 0.66,
-      },
-    ],
-  };
-
+function Bills() {
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
-      <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Direct VS Indirect</h2>
-      </header>
-      {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
-      <BarChart data={chartData} width={595} height={248} />
-    </div>
-  );
+            <div class="col-span-full xl:col-span-5">
+                <div class="overflow-auto lg:overflow-visible ">
+                    <div className="flex justify-between">
+                        <div class=" font-bold">Medical Bills</div>
+                        <div class="text-blue-400 text-sm hover:cursor-pointer">Display all ...</div>
+                    </div>
+                    <table class="table text-gray-400 border-separate space-y-6 text-sm">
+                        <thead class="bg-white text-gray-500">
+                            <tr>
+                                <th class="px-3 py-2">Brand</th>
+                                <th class="px-3 py-2 text-left">Category</th>
+                                <th class="px-3 py-2 text-left">Price</th>
+                                <th class="px-3 py-2 text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white">
+                                <td class="px-3 py-1">
+                                    <div class="flex align-items-center">
+                                        <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image"/>
+                                        <div class="ml-3">
+                                            <div class="">Appple</div>
+                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-3">
+                                    Technology
+                                </td>
+                                <td class="p-3 font-bold">
+                                    200.00$
+                                </td>
+                                <td class="p-3">
+                                    <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-3">
+                                    <div class="flex align-items-center">
+                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image"/>
+                                        <div class="ml-3">
+                                            <div class="">Realme</div>
+                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-3">
+                                    Technology
+                                </td>
+                                <td class="p-3 font-bold">
+                                    200.00$
+                                </td>
+                                <td class="p-3">
+                                    <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-3">
+                                    <div class="flex align-items-center">
+                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image"/>
+                                        <div class="ml-3">
+                                            <div class="">Samsung</div>
+                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-3">
+                                    Technology
+                                </td>
+                                <td class="p-3 font-bold">
+                                    200.00$
+                                </td>
+                                <td class="p-3">
+                                    <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+  )
 }
 
-export default DashboardCard04;
+export default Bills

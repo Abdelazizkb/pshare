@@ -15,7 +15,8 @@ module.exports = {
         xl: '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.01)',
       },
       colors:{
-        bgreen:"#18A7AD"
+        bgreen:"#0FC2C0",
+        bmove:"#6C87FF"
       },
       outline: {
         blue: '2px solid rgba(0, 112, 244, 0.5)',

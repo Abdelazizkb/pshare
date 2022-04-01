@@ -4,7 +4,30 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>PShare</title>
+    <style>
+      .table {
+        border-spacing: 0 15px;
+      }
+    
+      i {
+        font-size: 1rem !important;
+      }
+    
+      .table tr {
+        border-radius: 20px;
+      }
+    
+      tr td:nth-child(n+4),
+      tr th:nth-child(n+4) {
+        border-radius: 0 .625rem .625rem 0;
+      }
+    
+      tr td:nth-child(1),
+      tr th:nth-child(1) {
+        border-radius: .625rem 0 0 .625rem;
+      }
+    </style>
   </head>
   <body class="font-inter antialiased bg-slate-100 text-slate-600">
     <noscript>You need to enable JavaScript to run this app.</noscript>
