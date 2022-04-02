@@ -21,10 +21,10 @@ function Page3({setShow}) {
                     <div className="flex flex-col flex-1"/>
                     <div className="flex w-full justify-end -mx-3">
                         <div className=" ">
-                            <button className="block w-full max-w-xs mx-auto  text-bgreen rounded-lg px-4 py-1 font-semibold cursor-pointer" onClick={()=>{setShow(1)}}>Back </button>
+                            <button className="block w-full max-w-xs mx-auto  text-bgreen rounded-lg px-4 py-1 font-semibold cursor-pointer" onClick={()=>{setShow(1)}}>Précédent </button>
                         </div>
                         <div className=" ">
-                            <button className="block w-full max-w-xs mx-auto bg-bgreen  text-white rounded-lg px-4 p-1 font-semibold cursor-pointer" onClick={()=>{setShow(3)}}>Next </button>
+                            <button className="block w-full max-w-xs mx-auto bg-bgreen  text-white rounded-lg px-4 p-1 font-semibold cursor-pointer" onClick={()=>{setShow(3)}}>Suivant </button>
                         </div>
                     </div>
 

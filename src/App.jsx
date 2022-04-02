@@ -14,6 +14,9 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
+import Activate from './pages/Activate';
+import ResetPassword from './pages/ResetPassword';
+import ResetPasswordConfirm from './pages/ResetPasswordConfirm';
 
 function App() {
 
@@ -32,6 +35,9 @@ function App() {
         <Route exact path="/doctor" element={<Dashboard />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/activate" element={<Activate />} />
+        <Route exact path="/password/reset/:uid/:token" element={<ResetPassword />} />
+        <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
       </Routes>
     </>
   );
