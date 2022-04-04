@@ -1,38 +1,53 @@
-import React from 'react'
+import React,{useState} from 'react'
 import logo from '../images/pshare.png'
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
+import { login } from '../actions/auth';
 
-function Login() {
+function Login({login}) {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const { email, password } = formData;
+
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onSubmit = e => {
+        e.preventDefault();
+        login(email, password);
+    };
   return (
     <div className="h-screen bg-white flex flex-col space-y-10 justify-center items-center">
-     
+
      <div className=" flex w-96 -mb-8">
          <img className="w-36" src={logo} />
      </div>
-    
+
       <div className="bg-white w-96 shadow-2xl rounded-lg p-5">
         <h1 className="text-3xl font-medium">S’identifier</h1>
         <p className="text-sm">Tenez-vous au courant des évolutions de votre monde professionnel</p>
-        <form className="space-y-5 mt-5">
-          <input type="text" className="w-full h-16 border border-gray-800 rounded px-3" placeholder="E-amai ou Téléohone" />
+        <form className="space-y-5 mt-5" onSubmit={e => onSubmit(e)}>
+          <input type="text" name="email" className="w-full h-16 border border-gray-800 rounded px-3" placeholder="E-mail" onChange={e => onChange(e)}/>
          <div className="w-full flex items-center  border border-gray-800 rounded px-3">
-            <input type="password" className="w-4/5 h-12 border-0 outlined-0"  placeholder="Mot de passe" />
+            <input type="password" name="password" className="w-4/5 h-12 border-0 outlined-0"  placeholder="Mot de passe" onChange={e => onChange(e)}/>
             <span className="text-bgreen rounded-full px-3 cursor-pointer">afficher</span>
           </div>
-    
+
           <div className="">
                 <a href="#!" className="font-medium text-bgreen  rounded-full p-2">Mot de passe oublié ?</a>
           </div>
-    
-          <button className="text-center w-full bg-bgreen rounded-full text-white py-3 font-medium">S'identifier</button>
-    
+
+          <button className="text-center w-full bg-bgreen rounded-full text-white py-3 font-medium" type="submit">S'identifier</button>
+
         </form>
       </div>
-    
+
       <p>Nouveau sur PShare ? <Link to="/signup" className="text-bgreen font-medium">S’inscrire</Link>  </p>
     </div>
-    
+
     )
 }
 
-export default Login
+export default connect(null,{login}) (Login)

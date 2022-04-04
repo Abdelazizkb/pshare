@@ -17,6 +17,10 @@ import Home from './pages/Home';
 import Activate from './pages/Activate';
 import ResetPassword from './pages/ResetPassword';
 import ResetPasswordConfirm from './pages/ResetPasswordConfirm';
+import { Provider } from 'react-redux';
+import store from './store';
+import Loading from './hoc/Loading';
+
 
 function App() {
 
@@ -29,17 +33,19 @@ function App() {
   }, [location.pathname]); // triggered on route change
 
   return (
-    <>
-      <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route exact path="/doctor" element={<Dashboard />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/activate" element={<Activate />} />
-        <Route exact path="/password/reset/:uid/:token" element={<ResetPassword />} />
-        <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
-      </Routes>
-    </>
+    <Provider store={store}>
+      <Loading>
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route exact path="/doctor" element={<Dashboard />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/activate/:uid/:token" element={<Activate />} />
+          <Route exact path="/password/reset/:uid/:token" element={<ResetPassword />} />
+          <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
+        </Routes>
+      </Loading>
+    </Provider>
   );
 }
 
