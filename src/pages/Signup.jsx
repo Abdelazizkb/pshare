@@ -7,12 +7,13 @@ import signup1 from '../images/signup1.svg'
 import password from '../images/password.svg'
 import company from '../images/company.svg'
 import Step from '../partials/signup/Step'
-import {Link} from 'react-router-dom'
+import {Navigate,Link} from 'react-router-dom'
 import logo from '../images/pshare.png'
 import { connect } from 'react-redux';
 import Signedup from '../partials/signup/Signedup'
 
-function Signup({signedup}) {
+
+function Signup({isAuthenticated,signedup}) {
   const [isDoctor, setIsDoctor] = useState(false)
   const [show, setShow] = useState(0);
   const [formData, setFormData] = useState({
@@ -35,16 +36,15 @@ function Signup({signedup}) {
   useEffect(() => {
      console.log(formData)
   }, [formData])
-  
+  if (isAuthenticated)
+    return <Navigate  to='/doctor' />;
   if(signedup)
-  return <Signedup />
-
+    return <Signedup />
   return (
-
     <div className="min-w-screen bg-white min-h-screen flex flex-col items-center justify-center px-5 py-5">
-        <div className=" flex w-96 mb-2  w-3/6">
+        <Link to="/" className=" flex w-96 mb-2  w-3/6">
           <img className="w-36" src={logo} />
-        </div>
+        </Link>
         <div className="bg-white text-gray-500 rounded-lg shadow-2xl w-3/6 overflow-visible" style={{maxWidth:1000}}>
             <div className="md:flex w-full transition  duration-700">
               <div className="w-full lg:w-1/2 py-3 px-5 md:px-10 transition  duration-700">
@@ -77,7 +77,7 @@ function Signup({signedup}) {
 
 const mapStateToProps = state => ({
   signedup: state.auth.signedup,
+  isAuthenticated: state.auth.isAuthenticated
 });
-
 
 export default connect(mapStateToProps,null)(Signup)

@@ -120,7 +120,7 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
 }
 
 
-export const createCompany = (email,first_name,last_name,category,c_name,birthday,phone,inn,password,re_password) => async (dispatch) => {
+export const createCompany = (email,first_name,last_name,category,c_name,birthday,phone,inn,password,re_password,is_doctor=0) => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ export const createCompany = (email,first_name,last_name,category,c_name,birthda
     };
 
 
-    const body = JSON.stringify({ email,first_name,last_name,category,c_name,birthday,phone,inn,password,re_password });
+    const body = JSON.stringify({ email,first_name,last_name,category,c_name,birthday,phone,inn,password,re_password,is_doctor});
 
     axios.post(`http://localhost:8000/auth/company/new/`, body, config)
         .then(res => {

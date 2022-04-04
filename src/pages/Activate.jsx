@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import {Link,useParams} from 'react-router-dom';
+import {Navigate ,Link,useParams} from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from "axios"
 
-function Activate({}) {
+function Activate({isAuthenticated}) {
   const [card, setcard] = useState(false)
   const show = (card) ? <Done/> : <Spin/>
   const {uid,token} = useParams();
@@ -35,7 +36,8 @@ function Activate({}) {
     verify(uid, token)
   }, [])
 
-
+  if (isAuthenticated)
+    return <Navigate  to='/doctor' />;
   return (
       <>
         {show}
@@ -43,8 +45,11 @@ function Activate({}) {
   )
 }
 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+  });
 
-export default Activate
+export default connect(mapStateToProps,null) (Activate)
 
 function Done(){
     return (<div className="fixed top-0 left-0 w-full h-screen bg-white flex  items-center justify-center">

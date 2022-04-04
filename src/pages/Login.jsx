@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import logo from '../images/pshare.png'
-import {Link} from 'react-router-dom'
+import {Navigate ,Link} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
-function Login({login}) {
+function Login({isAuthenticated,login}) {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -18,12 +18,14 @@ function Login({login}) {
         e.preventDefault();
         login(email, password);
     };
+  if (isAuthenticated)
+    return <Navigate  to='/doctor' />;
   return (
     <div className="h-screen bg-white flex flex-col space-y-10 justify-center items-center">
 
-     <div className=" flex w-96 -mb-8">
+     <Link to="/" className=" flex w-96 -mb-8">
          <img className="w-36" src={logo} />
-     </div>
+     </Link>
 
       <div className="bg-white w-96 shadow-2xl rounded-lg p-5">
         <h1 className="text-3xl font-medium">S’identifier</h1>
@@ -50,4 +52,8 @@ function Login({login}) {
     )
 }
 
-export default connect(null,{login}) (Login)
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps,{login}) (Login)
