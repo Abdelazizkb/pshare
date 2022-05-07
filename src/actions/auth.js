@@ -11,6 +11,7 @@ import {
 } from './types'
 
 import axios from "axios"
+export const DOMAIN = 'http://192.168.1.106:8000'
 
 
 
@@ -25,7 +26,7 @@ export const loadUser = () => async (dispatch) => {
     };
 
     try {
-        const res = await axios.get(`http://localhost:8000/auth/users/me/`, config);
+        const res = await axios.get(`${DOMAIN}/auth/users/me/`, config);
         dispatch({
             type: USER_LOADED_SUCCESS,
             payload: res.data
@@ -49,7 +50,7 @@ export const login = (email, password) => async (dispatch) => {
     const body = JSON.stringify({ email, password });
 
     try {
-        const res = await axios.post(`http://localhost:8000/auth/jwt/create/`, body, config);
+        const res = await axios.post(`${DOMAIN}/auth/jwt/create/`, body, config);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -78,7 +79,7 @@ export const resetPassword = (email) => async (dispatch) => {
     const body = JSON.stringify({ email });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password/`, body, config);
+        const res = await axios.post(`${DOMAIN}/auth/users/reset_password/`, body, config);
         dispatch({
             type: RESET_PASSWORD_SUCCESS,
         })
@@ -105,7 +106,7 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
     const body = JSON.stringify({ uid, token, new_password, re_new_password });
 
     try {
-        const res = await axios.post(`http://localhost:8000/auth/users/reset_password_confirm/`, body, config);
+        const res = await axios.post(`${DOMAIN}/auth/users/reset_password_confirm/`, body, config);
         dispatch({
             type: RESET_PASSWORD_CONFIRM_SUCCESS,
         })
@@ -130,7 +131,7 @@ export const createCompany = (email,first_name,last_name,category,c_name,birthda
 
     const body = JSON.stringify({ email,first_name,last_name,category,c_name,birthday,phone,inn,password,re_password,is_doctor});
 
-    axios.post(`http://localhost:8000/auth/company/new/`, body, config)
+    axios.post(`${DOMAIN}/auth/company/new/`, body, config)
         .then(res => {
             dispatch({
                 type: SIGNUP_SUCCESS,
@@ -156,7 +157,7 @@ export const signUp = (email,first_name,last_name,birthday,phone,inn,password,re
 
     const body = JSON.stringify({ email,first_name,last_name,birthday,phone,inn,password,re_password,company });
 
-    axios.post(`http://localhost:8000/auth/users/`, body, config)
+    axios.post(`${DOMAIN}/auth/users/`, body, config)
         .then(res => {
             dispatch({
                 type: SIGNUP_SUCCESS,
@@ -182,7 +183,7 @@ export const verify = (uid, token) => async (dispatch) => {
 
     const body = JSON.stringify({ uid, token });
 
-    const res = await axios.post(`http://localhost:8000/auth/users/activation/`, body, config)
+    const res = await axios.post(`${DOMAIN}/auth/users/activation/`, body, config)
         .then(
             res => {return res },
         )
@@ -209,7 +210,7 @@ export const loadCategories= () => async (dispatch) =>{
     };
 
     try {
-        const res = await axios.get(`http://localhost:8000/auth/category/list/`);
+        const res = await axios.get(`${DOMAIN}/auth/category/list/`);
         dispatch({
             type: CATEGORIES_LOADED_SUCCESS,
             payload: res.data
@@ -231,7 +232,7 @@ export const loadCompanies= () => async (dispatch) =>{
     };
 
     try {
-        const res = await axios.get(`http://localhost:8000/auth/company/list/`);
+        const res = await axios.get(`${DOMAIN}/auth/company/list/`);
         dispatch({
             type: COMPANIES_LOADED_SUCCESS,
             payload: res.data

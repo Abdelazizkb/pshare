@@ -64,7 +64,7 @@ function Sidebar({
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0  transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 shadow-2xl bg-white p-4 transition-all duration-200 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}`}
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0  transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 shrink-0 shadow-2xl bg-white p-4 transition-all duration-200 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}`}
       >
 
         {/* Sidebar header */}
@@ -88,8 +88,9 @@ function Sidebar({
           </NavLink>
         </div>
 
-        {/* Links */}
-        <Authenticated/>
+        {/* Links 
+        <Authenticated/>*/}
+         <div className="flex flex-column h-16"/>
 
         <div className="space-y-8">
           {/* Pages group */}
@@ -104,14 +105,14 @@ function Sidebar({
                     </svg>
               </SidebarLink>
 
-              {/* Analytics */}
+              {/* Analytics 
               
               <SidebarLink pathname="Analytics">
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path className={`fill-current text-slate-600`} d="M0 20h24v2H0z" />
                       <path className={`fill-current `} d="M4 18h2a1 1 0 001-1V8a1 1 0 00-1-1H4a1 1 0 00-1 1v9a1 1 0 001 1zM11 18h2a1 1 0 001-1V3a1 1 0 00-1-1h-2a1 1 0 00-1 1v14a1 1 0 001 1zM17 12v5a1 1 0 001 1h2a1 1 0 001-1v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1z" />
                     </svg>
-              </SidebarLink>
+              </SidebarLink>*/}
               
               <SidebarLink pathname="Patients">
                             <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
@@ -128,7 +129,15 @@ function Sidebar({
                               <path className="fill-current text-slate-400" d="M16 9.5c0-.987-.429-1.897-1.147-2.639C14.124 10.348 10.66 13 6.5 13c-.103 0-.202-.018-.305-.021C7.231 13.617 8.556 14 10 14c.449 0 .886-.04 1.307-.11L15 16v-4h-.012C15.627 11.285 16 10.425 16 9.5z" />
                             </svg>
               </SidebarLink>
-
+              <SidebarLink pathname="Settings">
+                           <Settings />
+              </SidebarLink>
+              <SidebarLink pathname="Help center">
+                           <Help/>
+              </SidebarLink>
+              <SidebarLink pathname="Logout">
+                          <Logout/>
+              </SidebarLink>
               <>{/* Settings 
               <SidebarLinkGroup activecondition={pathname.includes('Patiens')}>
                 {(handleClick, open) => {
@@ -166,21 +175,9 @@ function Sidebar({
           </div>
         </div>
         
-        <div className="flex flex-column flex-grow"/>
 
-        <ul className=" pb-10 pt-5 2xl:py-10 border-t-2 border-slate-400 w-full">
-              <SidebarLink pathname="Settings">
-                           <Settings />
-              </SidebarLink>
-              <SidebarLink pathname="Help center">
-                           <Help/>
-              </SidebarLink>
-              <SidebarLink pathname="Logout">
-                          <Logout/>
-              </SidebarLink>
-        </ul>
         {/* Expand / collapse button */}
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
+        <div className="pt-3 hidden lg:inline-flex  justify-end mt-auto">
           <div className="px-3 py-2">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
