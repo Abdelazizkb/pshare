@@ -20,6 +20,7 @@ import ResetPasswordConfirm from './pages/ResetPasswordConfirm';
 import { Provider } from 'react-redux';
 import store from './store';
 import Loading from './hoc/Loading';
+import Patientehr from './pages/Patientehr';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/doctor" element={<Dashboard />} />
+          <Route exact path="/patient/:inn" element={<Patientehr/>} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/activate/:uid/:token" element={<Activate />} />

@@ -4,7 +4,7 @@ import p1 from '../images/last 1.png';
 import p2 from '../images/last 2.png';
 import p4 from '../images/last 4.png';
 import p5 from '../images/last 5.png';
-
+import {Link} from 'react-router-dom'
 import empty from '../images/empty.png';
 import {BiRightArrowAlt,BiLeftArrowAlt} from  'react-icons/bi'
 import {RiCloseFill} from 'react-icons/ri'
@@ -28,7 +28,7 @@ function List({data,title}) {
   return (
     <>
     {(popup)&&<Popup item={items[item]} setPopup={setPopup}/>}
-    <div className="h-auto  xl:w-11/12 bg-white shadow-lg  border border-slate-200 rounded-xl">
+    <div className="h-auto  w-11/12 bg-white shadow-lg  border border-slate-200 rounded-xl">
       <header className="px-5 py-2 flex justify-between">
         <h2 className="font-semibold text-slate-600">{title}</h2>
         <div className="font-semibold flex justify-center border-2 border-bgreen/40 rounded-md overflow-hidden shadow-md"> 
@@ -114,7 +114,7 @@ const Popup=({item,setPopup})=>(
                 <p  className="text-sm font-bold w-1/2">Phone : {item.patient.phone}</p> 
             </div>
             <div className="flex  w-full items-center mt-5">
-                <p className="text-sm font-bold w-1/2 mr-2">Inn : {item.patient.inn}</p>
+                <Link to={`/patient/${item.patient.inn}`} className="text-sm font-bold w-1/2 mr-2">Inn : {item.patient.inn}</Link>
                 <p  className="text-sm font-bold w-1/2">D-naissance : 12-12-1999</p> 
             </div>
          </div>

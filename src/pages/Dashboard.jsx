@@ -1,7 +1,6 @@
 import React, { Profiler, useState,Suspense } from 'react';
 
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
+
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
 import DashboardAvatars from '../partials/dashboard/DashboardAvatars';
 import FilterButton from '../partials/actions/FilterButton';
@@ -17,7 +16,6 @@ import Table from '../partials/dashboard/Table';
 import Hellodoctor from '../partials/dashboard/Hellodoctor';
 import {Navigate ,Link} from 'react-router-dom'
 
-const Profile = React.lazy(()=>import('../partials/dashboard/Profile'))
 
 import patien from '../images/patien.png'
 import file from '../images/file.png'
@@ -29,6 +27,8 @@ import { connect } from 'react-redux';
 import Diagnostics from '../partials/dashboard/Diagnostics';
 import Prescriptions from '../partials/dashboard/Prescriptions';
 import Files from '../partials/dashboard/Files';
+import Datatypes from '../partials/Datatypes';
+import DashboardContainer from '../hoc/DashboardContainer';
 
 
 const elements =[
@@ -58,70 +58,21 @@ const elements =[
   },
 ]
 const tables = [<Patients />,<Diagnostics/>,<Bills/>,<Prescriptions/>,<Files/>]
-function Dashboard({isAuthenticated}) {
-   
+
+function Dashboard() {
+
   const [show, setShow] = useState(0)
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  if (! isAuthenticated)
-    return <Navigate  to='/' />;
+
   return (
-    <div className="flex h-screen overflow-hidden">
-
-      {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {/* Content area */}
-      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-
-        {/*  Site header */}
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-        <main>
-          <div className="px-4 sm:px-6 lg:px-8 pb-4 w-full max-w-9xl mx-auto">
-
-            {/* Cards */}
-            <div className="flex flex-col flex-wrap justify-between">
-
-      
-{/*               
-              <DashboardCard02 />
-              <DashboardCard03 />
-              <DashboardCard04 />
-              <DashboardCard05 />
-              <DashboardCard06 />
-              <DashboardCard07 />
-              <DashboardCard08 />
-              <DashboardCard09 /> */}
-             
-{/*               <DashboardCard11 />
- */}          <div  className="flex  flex-col items-center w-full">
-                <Hellodoctor/>
-
-                <div  className="w-11/12 flex flex-wraper justify-between items-center mb-4">
-                  {elements.map((element,id)=>(
-                    <div key={id} className="w-24 h-28 py-5 bg-white rounded-xl flex flex-col items-center justify-center cursor-pointer"
-                          onClick={() =>{setShow(id)}}>
-                          <img  className="" src={element.image} />
-                          <p className="text-muted font-bold mt-2 text-xs">{element.title}</p>
-                    </div>
-                  ))}
-                </div>
-                {tables[show]}
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-      <Suspense fallback={<div className="h-full w-96 flex flex-col items-center justify-center bg-white">Chargement en cours...</div>}>
-        <Profile/>
-      </Suspense>
-    </div>
+  <DashboardContainer>
+      <Hellodoctor/>
+      <Datatypes data={elements} handleClick={setShow}/>
+      {tables[show]}
+  </DashboardContainer>
   );
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
-});
 
-export default connect(mapStateToProps,null) (Dashboard);
+
+export default Dashboard;

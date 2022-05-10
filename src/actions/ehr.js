@@ -1,10 +1,35 @@
 import {
-    PATIENTS_LOADED_SUCCESS,BILLS_LOADED_SUCCESS,PRESCRIPTIONS_LOADED_SUCCESS,DIAGNOSTICS_LOADED_SUCCESS,FILES_LOADED_SUCCESS,EHR_LOADED_FAIL
+    PATIENTS_LOADED_SUCCESS,PATIENT_LOADED_SUCCESS,BILLS_LOADED_SUCCESS,PRESCRIPTIONS_LOADED_SUCCESS,DIAGNOSTICS_LOADED_SUCCESS,FILES_LOADED_SUCCESS,EHR_LOADED_FAIL
 } from './types'
 
 import axios from "axios"
 export const DOMAIN = 'http://192.168.1.106:8000'
 
+export const loadPatient = (inn) => async (dispatch) => {
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+
+    try {
+        const res = await axios.get(`${DOMAIN}/ehr/patient/${inn}`, config);
+
+        dispatch({
+            type:PATIENT_LOADED_SUCCESS,
+            payload: res.data
+        })
+    }
+    catch (err) {
+        console.log(err)
+        dispatch({
+            type: EHR_LOADED_FAIL,
+        })
+    }
+}
 
 export const loadPatients = () => async (dispatch) => {
     const config = {
@@ -50,7 +75,6 @@ export const loadEhr = (type,reducerAction) => async (dispatch) => {
         })
     }
     catch (err) {
-        console.log(err)
         dispatch({
             type: EHR_LOADED_FAIL,
         })

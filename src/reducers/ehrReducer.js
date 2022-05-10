@@ -1,10 +1,11 @@
 import {
-    PATIENTS_LOADED_SUCCESS,BILLS_LOADED_SUCCESS,PRESCRIPTIONS_LOADED_SUCCESS,DIAGNOSTICS_LOADED_SUCCESS,FILES_LOADED_SUCCESS,EHR_LOADED_FAIL
+    PATIENTS_LOADED_SUCCESS,PATIENT_LOADED_SUCCESS,BILLS_LOADED_SUCCESS,PRESCRIPTIONS_LOADED_SUCCESS,DIAGNOSTICS_LOADED_SUCCESS,FILES_LOADED_SUCCESS,EHR_LOADED_FAIL
 } from '../actions/types'
 
 
 
 const initialState={
+    "patient":null,
     "bills":[],
     "files":[],
     "prescriptions":[],
@@ -27,6 +28,11 @@ export default function authReducer(state=initialState,action){
         return {
             ...state,
             diagnostics:payload,
+        }
+    case PATIENT_LOADED_SUCCESS:
+        return {
+            ...state,
+            patient:payload,
         }
     case EHR_LOADED_FAIL:
         return state

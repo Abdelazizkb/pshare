@@ -11,7 +11,7 @@ function Profile({user}) {
   const [date, setdate] = useState(new Date())
   
   return (
-    <div className="h-full w-96 flex flex-col items-center bg-white">
+    <div className="h-full xl:w-80 2xl:w-96  hidden lg:flex flex-col items-center bg-white">
         <div className ="w-5/6 flex justify-start items-center mt-5">
             <p className="font-bold text-lg">Mon profil</p>
         </div>

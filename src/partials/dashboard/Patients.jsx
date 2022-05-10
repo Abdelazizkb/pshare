@@ -24,7 +24,7 @@ function Patients({patients,loadPatients}) {
 
 
   return (
-    <div className="h-auto  xl:w-11/12 bg-white shadow-lg  border border-slate-200 rounded-xl">
+    <div className="h-auto w-11/12 bg-white shadow-lg  border border-slate-200 rounded-xl">
       <header className="px-5 py-2 flex justify-between">
         <h2 className="font-semibold text-slate-600">Patients</h2>
         <div className="font-semibold flex justify-center border-2 border-bgreen/40 rounded-md overflow-hidden shadow-md"> 
