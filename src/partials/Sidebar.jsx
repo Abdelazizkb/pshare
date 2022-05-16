@@ -11,11 +11,9 @@ import expendedlogo from '../images/pshare1.png'
 
 
 
-
 function Sidebar({
   sidebarOpen,
-  setSidebarOpen
-}) {
+  setSidebarOpen}) {
 
 
 
@@ -98,7 +96,7 @@ function Sidebar({
             <ul className="">
               {/* Dashboard */}
               <SidebarLink pathname="Dashboard">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                    <svg className="shrink-0 h-6 w-6 ml-1" viewBox="0 0 24 24">
                       <path className={`fill-current text-slate-400 `} d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" />
                       <path className={`fill-current text-slate-600 `} d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
                       <path className={`fill-current text-slate-400 `} d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z" />
@@ -115,7 +113,7 @@ function Sidebar({
               </SidebarLink>*/}
               
               <SidebarLink pathname="Patients">
-                            <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                            <svg className="shrink-0 h-6 w-6 ml-1" viewBox="0 0 24 24">
                               <path className={`fill-current text-slate-600 `} d="M19.714 14.7l-7.007 7.007-1.414-1.414 7.007-7.007c-.195-.4-.298-.84-.3-1.286a3 3 0 113 3 2.969 2.969 0 01-1.286-.3z" />
                               <path className={`fill-current  `} d="M10.714 18.3c.4-.195.84-.298 1.286-.3a3 3 0 11-3 3c.002-.446.105-.885.3-1.286l-6.007-6.007 1.414-1.414 6.007 6.007z" />
                               <path className={`fill-current text-slate-600 `} d="M5.7 10.714c.195.4.298.84.3 1.286a3 3 0 11-3-3c.446.002.885.105 1.286.3l7.007-7.007 1.414 1.414L5.7 10.714z" />
@@ -124,7 +122,7 @@ function Sidebar({
               </SidebarLink>
 
               <SidebarLink pathname="Chat">
-                            <svg className="shrink-0 w-4 h-4" viewBox="0 0 16 16">
+                            <svg className="shrink-0 w-4 h-4 ml-2" viewBox="0 0 16 16">
                               <path className="fill-current " d="M6.5 0C2.91 0 0 2.462 0 5.5c0 1.075.37 2.074 1 2.922V12l2.699-1.542A7.454 7.454 0 006.5 11c3.59 0 6.5-2.462 6.5-5.5S10.09 0 6.5 0z" />
                               <path className="fill-current text-slate-400" d="M16 9.5c0-.987-.429-1.897-1.147-2.639C14.124 10.348 10.66 13 6.5 13c-.103 0-.202-.018-.305-.021C7.231 13.617 8.556 14 10 14c.449 0 .886-.04 1.307-.11L15 16v-4h-.012C15.627 11.285 16 10.425 16 9.5z" />
                             </svg>
@@ -135,9 +133,7 @@ function Sidebar({
               <SidebarLink pathname="Help center">
                            <Help/>
               </SidebarLink>
-              <SidebarLink pathname="Logout">
-                          <Logout/>
-              </SidebarLink>
+              <Logout/>
               <>{/* Settings 
               <SidebarLinkGroup activecondition={pathname.includes('Patiens')}>
                 {(handleClick, open) => {
@@ -193,5 +189,6 @@ function Sidebar({
     </div>
   );
 }
+
 
 export default Sidebar;

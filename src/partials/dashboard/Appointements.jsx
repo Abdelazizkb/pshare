@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 
 import Image01 from '../../images/user-36-05.jpg';
 import Image02 from '../../images/user-36-06.jpg';
@@ -6,7 +6,20 @@ import Image03 from '../../images/user-36-07.jpg';
 import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 
+
+const test =[new Date('May 14, 2022 08:45:30'),  new Date('May 14, 2022 08:30:30'),
+new Date('May 19, 2022 08:15:30'),new Date('August 19, 2022 08:30:30'),new Date('August 19, 2022 23:15:30'),
+new Date('August 19, 2022 23:15:30'),new Date('May 17, 2022 23:15:30'),new Date('August 19, 2022 23:15:30'),
+new Date('August 19, 2022 23:15:30'),new Date('August 19, 2022 23:15:30'),new Date('May 16, 2022 23:15:30'),
+new Date('August 19, 2022 23:15:30'),new Date('May 19, 2022 16:30:30'),new Date('August 19, 2022 23:15:30'),
+new Date('May 15, 2022 23:15:30'),new Date('August 19, 2022 23:15:30'),new Date('August 19, 2022 23:15:30'),
+]
+
+
 function Appointements() {
+  const [today, setToday] = useState()
+  const [monthDays, setMonthDays] = useState()
+  const [lastWeek, setlastWeek] = useState([])
 
   const customers = [
     {
@@ -53,54 +66,64 @@ function Appointements() {
     },
   ];
 
+  const getAppointment=(day, month,year,days)=>{
+    console.log(day,month,year,days)
+    let filtered = days.filter(item=>{
+        return item.getDate()===day && item.getMonth()===month && item.getFullYear()===year 
+    })
+
+    console.log("len",filtered.length);
+    return filtered
+  }
+
+  useEffect(() => {
+    let lWeek=[]
+    for (let i = 0; i < 7; i++) {
+      let tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate()+i);
+      lWeek=[...lWeek,tomorrow]
+    }
+    setlastWeek(lWeek)
+  }, [])
+
+
   return (
-    <div className="h-80  xl:w-2/5 bg-white shadow-lg  border border-slate-200 rounded-xl">
+    <div className="h-72  w-11/12 bg-white shadow-lg  border border-slate-200 rounded-xl">
       <header className="px-5 py-2 flex justify-between">
-        <h2 className="font-semibold text-slate-600">Appointements</h2>
+        <h2 className="font-semibold text-slate-600">Rendez-vous</h2>
         <div className="font-semibold bg-bgreen text-sm text-white py-1 px-3 rounded-md hover:cursor-pointer">Browse all</div>
       </header>
       <div className="p-2">
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="table-auto w-full">
+          <div className="table-auto w-full">
             {/* Table header */}
-            <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
-              <tr>
-                <th className="p-1 px-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Name</div>
-                </th>
-                <th className="p-1 px-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Email</div>
-                </th>
-                <th className="p-1 px-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Hour</div>
-                </th>
-              </tr>
-            </thead>
+            <div className="text-xs font-semibold uppercase text-slate-400 ">
+              <div className="w-full flex mb-3">
+                {lastWeek.map((day,i)=>{
+                  return (<th className=" px-2 flex-1">
+                            <div className="font-semibold text-left text-center bg-slate-50 rounded-lg py-1 cursor-pointer">{day.getDate()}</div>
+                          </th>)
+                })}
+              </div>
+            </div>
             {/* Table body */}
-            <tbody className="text-sm divide-y divide-slate-100">
-              {
-                customers.map(customer => {
+            <div className="text-sm  flex">
+                {lastWeek.map((day,i)=>{
+                  let list= getAppointment(day.getDate(),day.getMonth(),day.getFullYear(),test)
                   return (
-                    <tr key={customer.id}>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="font-medium text-slate-800">{customer.name}</div>
-                        </div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-left">{customer.email}</div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-left font-medium text-bgreen">{customer.hour}</div>
-                      </td>
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
-          </table>
+                    <div className="flex-1 flex flex-col items-center">
+                      {list.map((day,i)=>{
+                        return (
+                          <div  className="w-5/6 text-center border-2 border-bgreen rounded-lg mb-1 cursor-pointer">
+                              {day.getHours()+":"+day.getMinutes()}
+                          </div>)})}
+
+                    </div>)})}
+
+            </div>
+          </div>
 
         </div>
 

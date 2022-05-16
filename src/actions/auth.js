@@ -11,7 +11,7 @@ import {
 } from './types'
 
 import axios from "axios"
-export const DOMAIN = 'http://192.168.1.106:8000'
+export const DOMAIN = 'http://127.0.0.1:8000'
 
 
 

@@ -5,7 +5,7 @@ function SidebarLink({to="/",pathname,children}) {
 const location = "Dashboard"; {/*useLocation();*/}
   const path  = "";
   return (
-              <li className={`px-3 py-2 my-3 rounded-3xl mb-0.5 last:mb-0 ${(path.localeCompare(pathname))? `hover:bg-bgreen hover:text-white`:` bg-bgreen text-white`}`}>
+              <li className={`px-2 py-2 my-3 rounded-3xl mb-0.5 last:mb-0 ${(path.localeCompare(pathname))? `hover:bg-bgreen hover:text-white`:` bg-bgreen text-white`}`}>
                 <NavLink end to={to} className={`block    transition duration-150`}>
                   <div className="flex items-center">
                       {children}

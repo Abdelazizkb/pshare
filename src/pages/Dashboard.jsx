@@ -57,7 +57,7 @@ const elements =[
     image: calendar
   },
 ]
-const tables = [<Patients />,<Diagnostics/>,<Bills/>,<Prescriptions/>,<Files/>]
+const tables = [<Patients />,<Diagnostics/>,<Bills/>,<Prescriptions/>,<Files/>,<Appointements/>]
 
 function Dashboard() {
 

@@ -3,7 +3,7 @@ import {
 } from './types'
 
 import axios from "axios"
-export const DOMAIN = 'http://192.168.1.106:8000'
+import {DOMAIN} from './auth.js'
 
 export const loadPatient = (inn) => async (dispatch) => {
 

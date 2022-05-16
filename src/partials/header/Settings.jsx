@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Settings() {
 
   return (
-    <div className="relative inline-flex ml-3 lg:-ml-1">
+    <div className="relative inline-flex">
     <button
       className={`p-2 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 rounded-full`}
       aria-haspopup="true">
