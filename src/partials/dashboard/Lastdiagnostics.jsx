@@ -24,7 +24,7 @@ function Lastdiagnostics({diagnostics,loadDiagnostics}) {
         <div className="w-full flex flex-col">
                {(diagnostics.length==0)&&<Empty/>}    
                {diagnostics.slice(0,4).map((e,i)=>{
-                    return   (<div className="flex w-full mb-3">
+                    return   (<div className="flex w-full mb-3" key={i}>
                                         <img className="rounded-full border-2 p-1 border-bgreen" src={images[i]} width="65" height="55" alt="User 01" />
                                         <div className="flex flex-col justify-between ml-4 py-2">
                                                 <span className="font-medium">{e.patient.first_name+" "+e.patient.last_name}</span>

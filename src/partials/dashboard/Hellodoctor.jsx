@@ -3,6 +3,8 @@ import doctor from '../../images/hellodoctor.png'
 import { connect } from 'react-redux';
 
 function Hellodoctor({user}) {
+  if (user==null)
+    return <div className="relative w-11/12 flex items-center justify-center -mt-6 mb-4"><p className="font-medium text-black/70">Chargement...</p></div>
   return (
     <div className="relative w-11/12 flex items-end -mt-6 mb-4">
         <div className="absolute bottom-0 w-full bg-bgreen h-40 z-0 rounded-3xl shadow-lg"/>
