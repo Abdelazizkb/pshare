@@ -1,5 +1,7 @@
 import {
-    PATIENTS_LOADED_SUCCESS,PATIENT_LOADED_SUCCESS,BILLS_LOADED_SUCCESS,PRESCRIPTIONS_LOADED_SUCCESS,DIAGNOSTICS_LOADED_SUCCESS,FILES_LOADED_SUCCESS,EHR_LOADED_FAIL
+    PATIENTS_LOADED_SUCCESS,PATIENT_LOADED_SUCCESS,BILLS_LOADED_SUCCESS,
+    PRESCRIPTIONS_LOADED_SUCCESS,DIAGNOSTICS_LOADED_SUCCESS,
+    FILES_LOADED_SUCCESS,EHR_LOADED_FAIL,ALLEHR_LOADED_SUCCESS
 } from './types'
 
 import axios from "axios"
@@ -96,4 +98,12 @@ export const loadPrescriptions = () => async (dispatch)=>{
 
 export const loadDiagnostics = () => async (dispatch)=>{
     dispatch(loadEhr("diagnostic",DIAGNOSTICS_LOADED_SUCCESS))
+}
+
+
+export const loadAllehr = (data) => async (dispatch)=>{
+    dispatch({
+        type : ALLEHR_LOADED_SUCCESS,
+        payload : data
+    })
 }

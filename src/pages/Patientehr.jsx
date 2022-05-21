@@ -37,8 +37,10 @@ const elements =[
 function Patientehr({patient,loadPatient}) {
     const {inn} = useParams();
     const [show, setShow] = useState(0)
-    const tables = (patient!==null)?[patient.diagnostics,patient.bills,patient.prescriptions,patient.files,patient.appointments]:[]
-
+    const tables = (patient!==null)?[{list:patient.diagnostics,title:"Consultations"},
+                                     {list:patient.bills,title:"Factures"},
+                                     {list:patient.prescriptions,title:"Ordonnances"},
+                                     {list:patient.files,title:"Fichiers"},{list:patient.appointments,title:"Rendez-vous"}]:[]
   useEffect(() => {
     loadPatient(inn)
   }, [inn])
@@ -47,7 +49,7 @@ function Patientehr({patient,loadPatient}) {
   <DashboardContainer>
     <Patientprofile/>
     <Datatypes data={elements} handleClick={setShow}/>
-    {(tables.length!=0)?<List data={tables[show]} title="ccc"/>:<div>...</div>}
+    {(tables.length!=0)?<List data={tables[show].list} title={tables[show].title}/>:<div>...</div>}
   </DashboardContainer>
   )
 }

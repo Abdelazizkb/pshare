@@ -33,7 +33,7 @@ function List({data,title}) {
         <h2 className="font-semibold text-slate-600">{title}</h2>
         <div className="font-semibold flex justify-center border-2 border-bgreen/40 rounded-md overflow-hidden shadow-md"> 
           <button className="px-2 border-r-2 border-bgreen/40  text-bgreen/70 text-2xl cursor-pointer disabled:bg-gray-200" onClick={()=>setfirstpage(firstpage-4)} disabled={firstpage===0}><BiLeftArrowAlt/></button> 
-          <button className="px-2 text-bgreen/70 text-2xl  cursor-pointer disabled:bg-gray-200" onClick={()=>setfirstpage(firstpage+4)} disabled={data.length<firstpage+4}><BiRightArrowAlt/></button> 
+          <button className="px-2 text-bgreen/70 text-2xl  cursor-pointer disabled:bg-gray-200" onClick={()=>setfirstpage(firstpage+4)} disabled={data.length<=firstpage+4}><BiRightArrowAlt/></button> 
         </div>
       </header>
       <div className="p-2">
@@ -63,13 +63,13 @@ function List({data,title}) {
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={avatars[id]} width="40" height="40" alt={item.patient.first_name} />
+                            <img className="rounded-full" src={avatars[id]} width="40" height="40" alt={item.user.first_name} />
                           </div>
-                          <div className="font-medium text-slate-800">{item.patient.last_name+" "+item.patient.first_name}</div>
+                          <div className="font-medium text-slate-800">{item.user.last_name+" "+item.user.first_name}</div>
                         </div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left">{item.patient.email}</div>
+                        <div className="text-left">{item.user.email}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-left font-medium text-bgreen">{item.date}</div>
@@ -106,15 +106,15 @@ const Popup=({item,setPopup})=>(
          <img className=" w-48 rounded-full self-center" src={p5}/>
          <div className=" w-full flex flex-col items-start pl-10 self-end ">
             <div className="flex w-full items-center mt-5">
-                <p className="text-sm font-bold w-1/2 mr-2">Nom : {item.patient.last_name}</p>
-                <p  className="text-sm font-bold w-1/2">Prenom : {item.patient.first_name}</p> 
+                <p className="text-sm font-bold w-1/2 mr-2">Nom : {item.user.last_name}</p>
+                <p  className="text-sm font-bold w-1/2">Prenom : {item.user.first_name}</p> 
             </div>
             <div className="flex  w-full items-center mt-5">
-                <p className="text-sm font-bold w-1/2 mr-2">E-mail : {item.patient.email}</p>
-                <p  className="text-sm font-bold w-1/2">Phone : {item.patient.phone}</p> 
+                <p className="text-sm font-bold w-1/2 mr-2">E-mail : {item.user.email}</p>
+                <p  className="text-sm font-bold w-1/2">Phone : {item.user.phone}</p> 
             </div>
             <div className="flex  w-full items-center mt-5">
-                <Link to={`/patient/${item.patient.inn}`} className="text-sm font-bold w-1/2 mr-2">Inn : {item.patient.inn}</Link>
+                <Link to={`/patient/${item.user.inn}`} className="text-sm font-bold w-1/2 mr-2">Inn : {item.user.inn}</Link>
                 <p  className="text-sm font-bold w-1/2">D-naissance : 12-12-1999</p> 
             </div>
          </div>
