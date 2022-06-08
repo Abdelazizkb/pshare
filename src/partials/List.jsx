@@ -4,6 +4,7 @@ import p1 from '../images/last 1.png';
 import p2 from '../images/last 2.png';
 import p4 from '../images/last 4.png';
 import p5 from '../images/last 5.png';
+import patientpic from '../images/patientprofile.png'
 import {Link} from 'react-router-dom'
 import empty from '../images/empty.png';
 import {BiRightArrowAlt,BiLeftArrowAlt} from  'react-icons/bi'
@@ -99,32 +100,103 @@ const Empty =()=>(
 )
 
 const Popup=({item,setPopup})=>(
-  <div className="fixed left-0 top-0 h-full w-full flex justify-center items-center bg-gray-400/20  z-40">
-      <div className="w-4/12 h-4/6 bg-white p-3 flex flex-col items-center rounded-lg">
+  <div className="fixed left-0 top-0 h-full w-full flex justify-center items-center bg-gray-400/20  z-40 ">
+      <div className="w-3/12 h-8/12 bg-white p-3 flex flex-col items-center border border-gray-200/80 rounded-xl shadow-xl">
        <div className="text-3xl w-full flex justify-end cursor-pointer" onClick={()=>setPopup(false)}><RiCloseFill/></div>
        <div className=" w-full  flex flex-col">
-         <img className=" w-48 rounded-full self-center" src={p5}/>
-         <div className=" w-full flex flex-col items-start pl-10 self-end ">
-            <div className="flex w-full items-center mt-5">
-                <p className="text-sm font-bold w-1/2 mr-2">Nom : {item.user.last_name}</p>
-                <p  className="text-sm font-bold w-1/2">Prenom : {item.user.first_name}</p> 
-            </div>
-            <div className="flex  w-full items-center mt-5">
-                <p className="text-sm font-bold w-1/2 mr-2">E-mail : {item.user.email}</p>
-                <p  className="text-sm font-bold w-1/2">Phone : {item.user.phone}</p> 
-            </div>
-            <div className="flex  w-full items-center mt-5">
-                <Link to={`/patient/${item.user.inn}`} className="text-sm font-bold w-1/2 mr-2">Inn : {item.user.inn}</Link>
-                <p  className="text-sm font-bold w-1/2">D-naissance : 12-12-1999</p> 
-            </div>
+         <img className=" w-28 rounded-full self-center" src={patientpic}/>
+         <div>
+           <div>
+            <label  className="text-xs font-semibold px-1">Nom</label>
+            <input value={item.user.first_name+" "+item.user.last_name} type="text" name="email" className="w-full h-7 border border-gray-800/30 rounded px-3 my-1" placeholder="E-mail"/>
+           </div>
+           <div>
+            <label  className="text-xs font-semibold px-1">E-mail</label>
+            <input value={item.user.email} type="text" name="email" className="w-full h-7 border border-gray-800/30 rounded px-3 my-1" placeholder="E-mail"/>
+           </div>
+           <div>
+            <label  className="text-xs font-semibold px-1">Telephone</label>
+            <input value={item.user.phone}  type="text" name="email" className="w-full h-7 border border-gray-800/30 rounded px-3 my-1" placeholder="E-mail"/>
+           </div>
+           <div>
+            <label  className="text-xs font-semibold px-1">Numero d'identité</label>
+            <input value={item.user.inn} type="text" name="email" className="w-full h-7 border border-gray-800/30 rounded px-3 my-1" placeholder="E-mail"/>
+           </div>
          </div>
        </div>
-       <div className="w-5/6 h-40 bg-slate-100/30 rounded-lg mt-8 py-1 px-2 overflow-auto">
-        <div className="flex w-full justify-end  items-end"><span className="text-xs font-bold text-bgreen">{item.date}</span></div>
-        <div className="w-full  my-2 break-all ">
-            {item.data}
-        </div>
-       </div>
+        {(item.data_type==="bill")&&<Bill item={item}/>}
+        {(item.data_type==="diagnostic")&&<Diagnostics item={item}/>}
+        {(item.data_type==="prescription")&&<Prescriptions item={item}/>}
       </div>
   </div>
 )
+
+const Bill =({item})=>(
+  <div className="mx-8 w-full h-auto bg-slate-100/30 rounded-lg mt-4 py-1 px-2 overflow-auto">
+    <div className="flex w-full justify-between  items-end"><span className="text-xs font-semibold">Facture :</span><span className="text-xs font-bold text-bgreen">{item.date}</span></div>
+    <div className="w-full  my-2 break-all ">
+        {item.data} DZD
+    </div>
+ </div>
+)
+
+const Diagnostics =({item})=>(
+  <div className="mx-8 w-full h-40 bg-slate-100/30 rounded-lg mt-4 py-1 px-2 overflow-auto">
+    <div className="flex w-full justify-between  items-end"><span className="text-xs font-semibold">Consultations :</span><span className="text-xs font-bold text-bgreen">{item.date}</span></div>
+    <div className="w-full  my-2 break-all ">
+        {item.data} 
+    </div>
+ </div>
+)
+
+const Prescriptions =({item})=>{
+  const list = JSON.parse(item.data)
+  console.log(list)
+  return (
+          <div className="mx-8 w-full h-auto  rounded-lg mt-4 py-1 px-2 overflow-auto">
+              <div className="flex w-full justify-between  items-end"><span className="text-xs font-semibold">Ordonnance :</span><span className="text-xs font-bold text-bgreen">{item.date}</span></div>
+              <div className="w-full  my-2 break-all ">
+                  <table className="table-auto w-full">
+                    {/* Table header */}
+                    <thead className="text-xs font-semibold  text-slate-400 bg-slate-50 rounded-r-lg">
+                        <tr className="">
+                            <th className="p-1 px-2 whitespace-nowrap">
+                                <div className="font-semibold text-left">Nom medicaments</div>
+                            </th>
+                            <th className="p-1 px-2 rounded-r-lg">
+                                <div className="font-semibold text-left">Dose/jr</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    {/* Table body */}
+                    <tbody className="w-full text-sm divide-y divide-slate-100 ">
+                    {
+                        list.map((item,id) => {
+                        return (
+                            <tr className="cursor-pointer h-14" key={id}>
+                                <td className="w-5/6   whitespace-nowrap mb-2">
+                                    <input name="name" 
+                                           className="p-2 w-full whitespace-nowrap border  rounded-lg"
+                                           value={item.name}
+                                           onChange={(e) =>{handleChange(id,e)}}
+                                    />
+                                </td>
+                                <td className=" whitespace-nowrap">
+                                    <div className="text-left font-medium text-bgreen">
+                                        <input name="dose"
+                                               className="p-2 w-20 whitespace-nowrap border rounded-lg text-center"
+                                               value={item.dose}
+                                               onChange={(e) =>{handleChange(id,e)}}
+                                        />
+                                    </div>
+                                </td>
+                            </tr>
+                        )
+                        })
+                    }
+                    </tbody>
+                </table>
+              </div>
+          </div>
+  )
+}
