@@ -18,7 +18,7 @@ export const loadPatient = (inn) => async (dispatch) => {
     };
 
     try {
-        const res = await axios.get(`${DOMAIN}/ehr/patient/${inn}`, config);
+        const res = await axios.get(`http://${DOMAIN}/ehr/patient/${inn}`, config);
 
         dispatch({
             type:PATIENT_LOADED_SUCCESS,
@@ -43,7 +43,7 @@ export const loadPatients = () => async (dispatch) => {
     };
 
     try {
-        const res = await axios.get(`${DOMAIN}/ehr/patients/`, config);
+        const res = await axios.get(`http://${DOMAIN}/ehr/patients/`, config);
         dispatch({
             type: PATIENTS_LOADED_SUCCESS,
             payload: res.data
@@ -69,7 +69,7 @@ export const loadEhr = (type,reducerAction) => async (dispatch) => {
     };
 
     try {
-        const res = await axios.get(`${DOMAIN}/ehr/${type}`, config);
+        const res = await axios.get(`http://${DOMAIN}/ehr/${type}`, config);
 
         dispatch({
             type:reducerAction,
