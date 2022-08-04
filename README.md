@@ -1,4 +1,4 @@
-# Blockchain-based medical record sharing platform (Cient side)
+# Blockchain-based medical record sharing platform (Client side)
 
 ![plateform](https://github.com/Abdelazizkb/pshare/blob/master/dist/assets/capture.png)
 
